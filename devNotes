@@ -1,0 +1,24 @@
+
+brownie console --network rinkeby
+
+
+0xb729CE0154a3Ce365df6FC721e0765159672eAa1
+
+
+fall = Vault.at("0xb729CE0154a3Ce365df6FC721e0765159672eAa1")
+
+devAccount = accounts.add(config["wallets"]["devKey"])
+fall.pwn({'from':devAccount})
+
+storage slot 2 is the password
+web3.eth.getStorageAt(fall.address,1)
+
+password = web3.eth.getStorageAt(fall.address,1)
+>>> str(password)
+"b'A very strong secret password :)'"
+
+password = "A very strong secret password :)"
+
+
+fall.unlock("0x412076657279207374726f6e67207365637265742070617373776f7264203a29",{'from':devAcco
+unt})
